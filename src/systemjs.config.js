@@ -22,6 +22,7 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      'moment': 'node_modules/moment',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -39,7 +40,8 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
+      'moment': { defaultExtension: 'js' }
     }
   });
 })(this);
