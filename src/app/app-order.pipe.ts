@@ -9,13 +9,12 @@ export class OrderBy implements PipeTransform {
 
     if (a === null || typeof a === 'undefined') a = 0;
     if (b === null || typeof b === 'undefined') b = 0;
-
-    if ((isNaN(parseFloat(a)) || !isFinite(a)) || (isNaN(parseFloat(b)) || !isFinite(b))) {
-      if (a.toLowerCase() < b.toLowerCase()) { return -1; }
-      if (a.toLowerCase() > b.toLowerCase()) { return 1; }
+    if ((isNaN(a) || !isFinite(a)) || (isNaN(b) || !isFinite(b))) {
+      if (a < b) { return -1; }
+      if (a > b) { return 1; }
     } else {
-      if (parseFloat(a) < parseFloat(b)) return -1;
-      if (parseFloat(a) > parseFloat(b)) return 1;
+      if (a < b) return -1;
+      if (a > b) return 1;
     }
     return 0;
   }
@@ -45,7 +44,7 @@ export class OrderBy implements PipeTransform {
       }
     } else {
       return value.sort(function(a: any, b: any){
-        for(let i: number = 0; i < config.length; i++){
+        for (let i: number = 0; i < config.length; i++){
           let desc = config[i].substr(0, 1) === '-';
           let property = config[i].substr(0, 1) === '+' || config[i].substr(0, 1) === '-'
             ? config[i].substr(1)

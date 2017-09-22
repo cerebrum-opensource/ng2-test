@@ -20,7 +20,7 @@
       <tbody>
       <tr *ngFor="let item of list | searchFilterPipe: searchText | orderBy : convertSorting()">
         <td>{{item.name}}</td>
-        <td>{{item.joining_date}}</td>
+        <td>{{item.joining_date | date:'dd/MM/yyyy'}}</td>
         <td>{{item.age }}</td>
       </tr>
       </tbody>
