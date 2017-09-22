@@ -54,7 +54,7 @@ export class AppComponent {
     let oldElement = this.list[arrayLength - 4];
     let element = Object.assign({}, oldElement);
     element.age = element.age.toString().split('').reverse().join('');
-    let nextDay = moment(element.joining_date, 'DD/MM/YYYY').add('days', 1);
+    let nextDay = moment(element.joining_date, 'DD/MM/YYYY').add(1, 'days');
     element.joining_date = nextDay.format('DD/MM/YYYY');
     this.list.push(element);
   }
