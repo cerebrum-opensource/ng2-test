@@ -3,13 +3,13 @@
   <div class="form-group" style="width: 50%">
     <input type="text" [(ngModel)]="searchText"
            class="form-control" placeholder="Search By Name"/>
-    <table class="table" style="border:1px solid #ccc; margin-top: 10px;">
+    <table class="table table-hover table-striped table-sortable" style="border:1px solid #ccc; margin-top: 10px;">
       <thead>
       <tr>
         <th style="width: 20%">
           Name
         </th>
-        <th style="width: 60%">
+        <th style="width: 60%" (click)="changeSorting('joining_date')">
           Joining Date
         </th>
         <th style="width: 20%">
@@ -18,11 +18,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of list | searchFilterPipe: searchText; let i = index">
+      <tr *ngFor="let item of list | searchFilterPipe: searchText">
         <td>{{item.name}}</td>
-        <td>{{item.joining_date}}</td>
-        <td *ngIf="i < 4">{{item.age }}</td>
-        <td *ngIf="i > 3">{{item.age | reverseFilterPipe}}</td>
+        <td>{{item.joining_date | format: 'datetime'}}</td>
+        <td>{{item.age }}</td>
       </tr>
       </tbody>
     </table>
