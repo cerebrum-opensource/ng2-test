@@ -1,4 +1,4 @@
-import {Injectable, PipeTransform, Pipe} from '@angular/core';
+import { Injectable, PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({
   name: 'searchFilterPipe',
