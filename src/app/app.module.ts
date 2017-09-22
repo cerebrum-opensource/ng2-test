@@ -5,13 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { SearchFilterPipe} from './app-searchfilter.pipe';
 import { OrderBy} from './app-order.pipe';
-import { Format} from './app.datetime';
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule],
-  declarations: [ AppComponent, SearchFilterPipe, OrderBy , Format],
+  declarations: [ AppComponent, SearchFilterPipe, OrderBy],
   bootstrap:    [ AppComponent ],
-  providers: [SearchFilterPipe, OrderBy , Format]
+  providers: [SearchFilterPipe, OrderBy]
 })
 export class AppModule { }

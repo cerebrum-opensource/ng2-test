@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {SearchFilterPipe} from './app-searchfilter.pipe';
 import {Observable} from 'rxjs/Rx';
+import {SearchFilterPipe} from './app-searchfilter.pipe';
+import { OrderBy } from './app-order.pipe';
+
 
 @Component({
   selector: 'my-app',
@@ -14,7 +16,7 @@ export class AppComponent {
   public timer: any;
   public subscription: any;
 
-  constructor(private  searchFilterPipe: SearchFilterPipe) {
+  constructor(private  searchFilterPipe: SearchFilterPipe , private orderBy: OrderBy) {
     this.searchText = '';
     this.name = 'Test Assignment';
     this.list = [{
@@ -38,10 +40,10 @@ export class AppComponent {
       }];
 
 
-    this.timer = Observable.timer(1000 * 10, 1000 * 20);
+    this.timer = Observable.timer(1000 * 10, 1000 * 30);
 
-    this.subscription = this.timer.subscribe(t => {
-      this.appendElements()
+    this.subscription = this.timer.subscribe((t: any) => {
+      this.appendElements();
       this.setFormData();
     });
   }
@@ -59,6 +61,20 @@ export class AppComponent {
     if (arrayLength > 7) {
       this.subscription.unsubscribe();
     }
+  }
+
+  public changeSorting(columnName: string): void {
+    let data = this.list;
+    if (data.column === columnName) {
+      data.descending = !data.descending;
+    } else {
+      data.column = columnName;
+      data.descending = false;
+    }
+  }
+
+  public convertSorting(): string {
+    return this.list.descending ? '-' + this.list.column : this.list.column;
   }
 
 
