@@ -11,6 +11,7 @@ export class AppComponent  {
   public name: string;
   public searchText: string;
   public list: any;
+  public data: any;
   constructor(private  reverseFilterPipe: ReverseFilterPipe, private  searchFilterPipe: SearchFilterPipe) {
     this.searchText = '';
     this.name = 'Test Assignment';
@@ -32,7 +33,14 @@ export class AppComponent  {
         name: 'XYZ',
         joining_date: '28/10/2015',
         age: 21
-      }];
+      }
+    ];
+    let array = this.list;
+    this.data = [];
+    for (let i = 0; i < array.length; i++) {
+      let element = array[i];
+      this.data.push(element);
+    }
+    Array.prototype.push.apply(this.list, this.data);
   }
-
 }

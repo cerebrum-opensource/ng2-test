@@ -23,14 +23,7 @@
         <td>{{item.joining_date}}</td>
         <td>{{item.age }}</td>
         </tr>
-        <tr *ngFor="let item of list  | searchFilterPipe: searchText">
-        <td>{{item.name}}</td>
-        <td>{{item.joining_date}}</td>
-        <td>{{item.age | reverseFilterPipe}}</td>
-        </tr>
-
         </tbody>
-
     </table>
   </div>
 </div>
